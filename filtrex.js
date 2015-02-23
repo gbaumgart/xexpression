@@ -1,4 +1,4 @@
-define(["require"], function (require) {
+define(["require","module","xexpression/jison"], function (require,module,jison) {
 
     function filtrexParser() {
 
@@ -6,8 +6,8 @@ define(["require"], function (require) {
         // which is a pure JavaScript implementation of
         // Bison <http://www.gnu.org/software/bison/>.
 
-        var Jison = require('jison'),
-            bnf = require('jison/bnf');
+        var Jison = jison;// require('jison');
+        var bnf = require('jison/bnf');
 
         function code(args, skipParentheses) {
             var argsJs = args.map(function (a) {
