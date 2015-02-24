@@ -43,6 +43,7 @@ define(['xdojo/declare'], function (declare) {
             throw 'Unknown function: ' + funcName + '()';
         }
 
+        console.log('js: ' + js.join(''));
         var func = new Function('functions', 'data', 'unknown', js.join(''));
         return function (data) {
             return func(functions, data, unknown);
