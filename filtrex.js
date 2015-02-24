@@ -5467,13 +5467,22 @@ define([
          */
         function parse(expression, variables, functions) {
 
-            var parser = ExpressionCache[expression] || compileExpression(expression, functions);
+
+            var parser;
+            if(ExpressionCache[expression]){
+                parser = ExpressionCache[expression].parser;
+            } else{
+                parser = compileExpression(expression,variables,functions);
+            }
 
             //apply
             result = parser(variables);
 
             //cache
-            ExpressionCache[expression] = parser;
+            ExpressionCache[expression] = {
+                parser:parser,
+                expression:expression
+            };
 
             return result;
         }
@@ -5581,16 +5590,33 @@ define([
         },
         clear: function () {
             ExpressionCache = {}
+        },
+        /**
+         * Cache access
+         * @param expression {string} the key in the cache
+         */
+        getParser:function(expression){
+            if(ExpressionCache[expression]) {
+                return ExpressionCache[expression].parser;
+            }
+        },
+        /**
+         * Full access to the cache
+         * @returns {Object}
+         */
+        getCache:function(){
+            return ExpressionCache;
         }
     });
+
 
 
     //track actual parser implementation
     _Expression.Impl = Impl;
 
-    /*
     //chain
-    dcl.chainAfter(_Expression, "parse");
+    //dcl.chainAfter(_Expression, "parse");
+    /*
     var variables = {
         Volume: 2,
         transactions: 3
@@ -5607,11 +5633,11 @@ define([
             end: '}}'
         }
     });
+    console.log('filtered result : ', _result);
+    */
 
-    console.log('filtered result : ', _result);*/
 
-
-    //var myfilter = parse(_expression);
+   // var myfilter = parse(_expression);
 
 
 
