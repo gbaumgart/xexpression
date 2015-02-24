@@ -172,6 +172,7 @@ define([
         return new Jison.Parser(grammar);
     }
 
+    //make jison happy
     var require = (function () {
         var require = (function () {
             var modules = {};
@@ -5422,7 +5423,6 @@ define([
         return require;
     })();
 
-
     /****************************************************************************
      *
      * Actual implementation for xide/dojo/delite
@@ -5446,7 +5446,7 @@ define([
      *
      * @param expression
      * @param context
-     * @param options
+     * @param _options
      * @returns {Arguments}
      * @constructor
      */
@@ -5536,6 +5536,10 @@ define([
     /**
      * As module with xExpression API implementation for filtrex (bison)
      *
+     * Might be slow in some situations
+     *
+     * @TODO bind this to native C bison implementation
+     *
      * @class module:xexpression/filtrex
 
      * @example
@@ -5613,19 +5617,22 @@ define([
 
     //track actual parser implementation
     _Expression.Impl = Impl;
-
+/*
     //chain
     //dcl.chainAfter(_Expression, "parse");
-    /*
+
     var variables = {
         Volume: 2,
         transactions: 3
     };
+
+    //1.5 secs
     var _expression = 'send{{Volume+4}} my garbage string {{transactions*2/Volume}}';
 
     var _test = new _Expression();
 
 
+    console.profile('filtrex');
     var _result = _test.parse(_expression, null, {
         variables: variables,
         delimiters: {
@@ -5633,8 +5640,11 @@ define([
             end: '}}'
         }
     });
+
+    console.profileEnd();
     console.log('filtered result : ', _result);
-    */
+*/
+
 
 
    // var myfilter = parse(_expression);
