@@ -43,6 +43,7 @@ define(['xdojo/declare'], function (declare) {
             throw 'Unknown function: ' + funcName + '()';
         }
 
+        console.log('js: ' + js.join(''));
         var func = new Function('functions', 'data', 'unknown', js.join(''));
         return function (data) {
             return func(functions, data, unknown);
@@ -5415,14 +5416,9 @@ define(['xdojo/declare'], function (declare) {
         return require;
     })();
 
-    var _Expression = declare('xexpression/Expression', [], {
-        compileExpression: compileExpression,
-        filtrexParser: filtrexParser
+    return declare('xexpression/filtrex', null , {
+        parse: compileExpression
     });
-
-    _Expression.compileExpression = compileExpression;
-
-    console.log('filtrx', compileExpression);
 
     return _Expression;
 
