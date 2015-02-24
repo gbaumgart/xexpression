@@ -1,9 +1,6 @@
 define(['dojo/_base/declare','./filtrex'], function (declare,filtrex) {
 
-
-
     var _Expression = declare('xexpression/Expression',[],{
-
 
     });
 
