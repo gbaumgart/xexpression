@@ -38,9 +38,11 @@ define([
          * @returns {string}
          */
         parse:function(type,expression,context,options){
-            var _parse = types.EXPRESSION_PARSER[type];
+            var _parse = type;
             if(_parse){
                 return _parse(expression,context,options);
+            }else{
+                console.error('parser does not exists ' + type);
             }
             return expression;
         },

@@ -5516,20 +5516,22 @@ define([
             result = parse(expression, options.variables, options.functions);
         }
         return result;
-
     }
 
     /**
      * Register parser in registry
      */
-    lang.mixin(types.EXPRESSION_PARSER, {
 
+    if(!types.EXPRESSION_PARSER){
+        types.EXPRESSION_PARSER = {};
+    }
+    lang.mixin(types.EXPRESSION_PARSER, {
         /**
          * Filtrex
          * @memberOf module:xide/types/EXPRESSION_PARSER
          * @constant
          */
-        FILTREX: Impl
+        'FILTREX': Impl
     });
 
 
@@ -5612,6 +5614,7 @@ define([
             return ExpressionCache;
         }
     });
+
 
 
 
