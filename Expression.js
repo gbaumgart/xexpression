@@ -5,7 +5,6 @@ define([
     //try parsers
     'xdojo/has!filtrex?./filtrex'   // filtrex (bison based)
 ], function (declare,types) {
-
     /**
      * Hub to different parsers, offering a simple but
      * consistent API.
@@ -23,10 +22,9 @@ define([
      *
      * 5. switch to platform implementation if possible (bison/flex in C over node.js?)
      *
-     * @class module:xexpressionExpression
+     * @class module:xexpression/Expression
      */
     var _Expression = declare('xexpression/Expression', null , {
-
         /**
          * Parse runs the specified parser
          * @param type {xide/types/EXPRESSION_PARSER}
@@ -35,6 +33,7 @@ define([
          * @param options {Object}
          * @param options.variables {map} a map of key-value to be used as 'constants' when parsing; eg: PI,..
          * @param options.functions {map} a map of key-function to be used to resolve functions when parsing, eg: max()
+         * @param options.delimiters {object} set of delimiters defined by begin and end
          * @returns {string}
          */
         parse:function(type,expression,context,options){
