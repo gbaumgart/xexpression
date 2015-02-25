@@ -9,7 +9,7 @@
  * Both functions are meant
  * to be run in the context of the widget, so that properties are available through `this`.
  *
- * Could also theoretically be used by a build-tool to precompile templates, assuming you loaded
+ * Could also theoretically be used by a build-tool to pre-compile templates, assuming you loaded
  * [jsdom](https://github.com/tmpvar/jsdom) to provide methods like `document.createElement()`.
  *
  * Template has a format like:
@@ -37,7 +37,6 @@ define(["require","dojo/Promise"], function (require, Promise) {
 
 	// Text plugin to load the templates and do the build.
 	var textPlugin = "requirejs-text/text";
-
 	/**
 	 * Given a string like "hello {{foo}} world", generate JS code to output that string,
 	 * ex: "hello" + this.foo + "world"
