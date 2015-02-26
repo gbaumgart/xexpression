@@ -48,8 +48,7 @@ define([
         function unknown(funcName) {
             throw 'Unknown function: ' + funcName + '()';
         }
-
-        console.log('js: ' + js.join(''));
+        //console.log('js: ' + js.join(''));
         var func = new Function('functions', 'data', 'unknown', js.join(''));
         return function (data) {
             return func(functions, data, unknown);
@@ -5521,10 +5520,6 @@ define([
     /**
      * Register parser in registry
      */
-
-    if(!types.EXPRESSION_PARSER){
-        types.EXPRESSION_PARSER = {};
-    }
     lang.mixin(types.EXPRESSION_PARSER, {
         /**
          * Filtrex
@@ -5538,7 +5533,23 @@ define([
     /**
      * As module with xExpression API implementation for filtrex (bison)
      *
-     * Might be slow in some situations
+     * Performance notes:
+     *
+     * - Might be too slow in some situations. Use it with attention.
+     * - When running the first time, it needs 100x - 1000x times more than the second time
+     *   This is due the internal initialization of the parser code (not for the expression).
+     * - The cache implementation makes sure that every expression can be run multiple times
+     *   with different variables.
+     * - Each expression's parser object remains in the cache, til wiped out manaually.
+     * - Use the cache object when only variables changed but not the expression it self.
+     *
+     * - Example times:
+     * mv{{Volume+5}}: 300 ms - 1 sec for the first the parser is used, in Chrome
+     * mv{{Volume+2}}: 1ms - 300ms when running another time, in Chrome
+     * mv{{Volume+6}}{{11}}: 1ms - 300ms, notice its creating 2 parsers here since we have
+     * 2 different expressions. I will try to re-shape the bison grammar to optimize this.
+     *
+     *
      *
      * @TODO bind this to native C bison implementation
      *
