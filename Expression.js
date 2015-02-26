@@ -22,6 +22,27 @@ define([
      *
      * 5. switch to platform implementation if possible (bison/flex in C over node.js?)
      *
+     *
+     * @example
+
+     //Using the filtrex parser (see comments at bottom as well):
+
+     var _parser = new Expression();
+     var str = mv{{Volume+6}}
+     str = _parser.parse(types.EXPRESSION_PARSER.FILTREX,
+         str, this,
+         {
+             //key-value map
+             variables: scope.getVariablesAsObject(),
+             //optional, needed the expression is part of a string containing non-parsable stuff
+             delimiters: {
+                 begin: '{{',
+                 end: '}}'
+             }
+         }
+     );
+
+     *
      * @class module:xexpression/Expression
      */
     var _Expression = declare('xexpression/Expression', null , {
