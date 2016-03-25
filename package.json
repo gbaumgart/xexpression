@@ -1,0 +1,14 @@
+{
+    "name": "xexpression",
+    "version": "0.1.1",
+    "dependencies": {},
+    "devDependencies": {},
+    "licenses": [
+        {
+            "type": "BSD",
+            "url": "https://github.com/ibm-js/delite/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://gitlab.com/xamiro/xexpression/issues",
+    "dojoBuild": "layer.profile.js"
+}
