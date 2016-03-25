@@ -10,6 +10,5 @@
         }
     ],
     "bugs": "https://gitlab.com/xamiro/xexpression/issues",
-    "dojoBuild": "layer.profile.js",
-    "homepage": "https://gitlab.com/xamiro/xexpression"
+    "dojoBuild": "layer.profile.js"
 }
