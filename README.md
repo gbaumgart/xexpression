@@ -1,5 +1,9 @@
 ### Simple interface for *filtrex*, a bison and Javascript based expression parser
 
+
+This is packaged as AMD module.
+
+
 ```js
 
      var _parser = new Expression();
