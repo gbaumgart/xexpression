@@ -1,6 +1,6 @@
 {
     "name": "xexpression",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "dependencies": {},
     "devDependencies": {},
     "licenses": [
@@ -10,5 +10,6 @@
         }
     ],
     "bugs": "https://gitlab.com/xamiro/xexpression/issues",
-    "dojoBuild": "layer.profile.js"
+    "dojoBuild": "layer.profile.js",
+    "homepage": "https://gitlab.com/xamiro/xexpression"
 }

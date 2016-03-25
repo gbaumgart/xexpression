@@ -6,22 +6,7 @@ This is packaged as AMD module.
 
 ```js
 
-     var _parser = new Expression();
-     var str = mv{{Volume+6}}
-     str = _parser.parse(types.EXPRESSION_PARSER.FILTREX,
-         str, this,
-         {
-             //key-value map
-             variables: scope.getVariablesAsObject(),
-             //optional, needed the expression is part of a string containing non-parsable stuff
-             delimiters: {
-                 begin: '{{',
-                 end: '}}'
-             }
-         }
-     );
-     
-    //1. Simple version, just evaluate one expression two times with different variables
+     /1. Simple version, just evaluate one expression two times with different variables
 
      // Input from user (e.g. search filter)
      var expression = 'transactions <= 5 and abs(profit) > 20.5';
